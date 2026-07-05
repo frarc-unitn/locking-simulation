@@ -1,1 +1,5 @@
 /.settings
+/Makefile
+.qtenvrc
+out
+/locks
