@@ -1,0 +1,2 @@
+[Huang, Jiandong et al., Experimental Evaluation of Real-Time Optimistic Concurrency Control Schemes](https://www.researchgate.net/profile/Krithivasan-Ramamritham/publication/221309915_Experimental_Evaluation_of_Real-Time_Optimistic_Concurrency_Control_Schemes/links/5468d36f0cf2397f782d6ad2/Experimental-Evaluation-of-Real-Time-Optimistic-Concurrency-Control-Schemes.pdf)
+[Theo Härder, Observations on optimistic concurrency control schemes](https://doi.org/10.1016/0306-4379(84)90020-6)
