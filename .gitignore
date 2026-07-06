@@ -3,3 +3,5 @@
 .qtenvrc
 out
 /locks
+*_m.cc
+*_m.h
