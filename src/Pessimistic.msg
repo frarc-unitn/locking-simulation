@@ -1,7 +1,8 @@
 enum MessageKind {
-	LOCKREQUEST = 1;
-	LOCKGRANTED = 2;
-	LOCKRELEASE = 3;
+	LOCKREQUEST    = 1;
+	LOCKGRANTED    = 2;
+	LOCKRELEASE    = 3;
+	LOCKRELSUCCESS = 4;
 }
 
 message LockRequest {}
@@ -14,4 +15,4 @@ message LockRelease {
 	int data;
 }
 
-// message LockReleaseAck {}
+message LockReleaseSuccessful {}

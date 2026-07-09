@@ -12,4 +12,5 @@ class PessimisticNode: public Node {
     virtual cMessage* createStartMessage() override;
 
     void handleLockGranted(LockGranted* msg);
+    void handleLockReleaseSuccess(LockReleaseSuccessful* msg);
 };

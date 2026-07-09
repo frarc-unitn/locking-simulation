@@ -17,6 +17,10 @@ void PessimisticNode::handleMessage(cMessage* msg) {
       handleLockGranted((LockGranted*) msg);
       delete msg;
       break;
+    case MessageKind::LOCKRELSUCCESS:
+      handleLockReleaseSuccess((LockReleaseSuccessful*) msg);
+      delete msg;
+      break;
     default:
       throw cRuntimeError("PessimisticNode: Unrecognized Message Kind");
       break;
@@ -28,4 +32,8 @@ void PessimisticNode::handleLockGranted(LockGranted* msg){
   LockRelease* reply = new LockRelease("Node: Lock Release", MessageKind::LOCKRELEASE);
   reply->setData(data);
   sendWorkMessage(reply);
+}
+
+void PessimisticNode::handleLockReleaseSuccess(LockReleaseSuccessful* msg){
+  scheduleStart();
 }
