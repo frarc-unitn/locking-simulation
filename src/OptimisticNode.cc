@@ -4,6 +4,7 @@
 Define_Module(OptimisticNode);
 
 void OptimisticNode::initialize() {
+  Node::initialize();
   scheduleStart();
 }
 
@@ -37,6 +38,7 @@ void OptimisticNode::handleReadReply(ReadReply* msg){
 }
 
 void OptimisticNode::handleCompareAndSwapSuccess(CompareAndSwapSuccess* msg){
+  commitWorkToVector();
   scheduleStart();
 }
 

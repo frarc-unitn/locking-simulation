@@ -4,6 +4,7 @@
 Define_Module(PessimisticNode);
 
 void PessimisticNode::initialize() {
+  Node::initialize();
   scheduleStart();
 }
 
@@ -35,5 +36,6 @@ void PessimisticNode::handleLockGranted(LockGranted* msg){
 }
 
 void PessimisticNode::handleLockReleaseSuccess(LockReleaseSuccessful* msg){
+  commitWorkToVector();
   scheduleStart();
 }
