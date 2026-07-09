@@ -4,7 +4,11 @@
 Define_Module(OptimisticNode);
 
 void OptimisticNode::initialize() {
-  // Schedule Read Request
+  scheduleStart();
+}
+
+cMessage* OptimisticNode::createStartMessage() {
+  return new ReadRequest(nullptr, MessageKind::READREQUEST);
 }
 
 void OptimisticNode::handleMessage(cMessage* msg) {

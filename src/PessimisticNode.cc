@@ -4,7 +4,11 @@
 Define_Module(PessimisticNode);
 
 void PessimisticNode::initialize() {
-  // Schedule Lock Request
+  scheduleStart();
+}
+
+cMessage* PessimisticNode::createStartMessage() {
+  return new LockRequest(nullptr, MessageKind::LOCKREQUEST);
 }
 
 void PessimisticNode::handleMessage(cMessage* msg) {

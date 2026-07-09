@@ -9,6 +9,8 @@ class OptimisticNode: public Node {
     // virtual void finish() override;
 
   private:
+    virtual cMessage* createStartMessage() override;
+
     void handleReadReply(ReadReply* msg);
     void handleCompareAndSwapSuccess(CompareAndSwapSuccess* msg);
     void handleCompareAndSwapFailed(CompareAndSwapFailed* msg);

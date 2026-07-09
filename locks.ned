@@ -13,44 +13,59 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-moduleinterface Node {
+moduleinterface Node
+{
+    parameters:
+        double requestInterval @unit(ms);
+
     gates:
         inout link;
 }
 
-simple OptimisticNode like Node {
+simple OptimisticNode like Node
+{
+    parameters:
+        double requestInterval @unit(ms);
+
     gates:
         inout link;
 }
 
-simple PessimisticNode like Node {
+simple PessimisticNode like Node
+{
+    parameters:
+        double requestInterval @unit(ms);
+
     gates:
         inout link;
 }
 
-moduleinterface Manager {
+moduleinterface Manager
+{
     gates:
         inout nodes[];
 }
 
-simple OptimisticManager like Manager {
+simple OptimisticManager like Manager
+{
     gates:
         inout nodes[];
 }
 
-simple PessimisticManager like Manager {
+simple PessimisticManager like Manager
+{
     gates:
         inout nodes[];
 }
 
-network locking_scenario {
+network locking_scenario
+{
     parameters:
         string locking_type;
 
     submodules:
         nodes[2]: <locking_type + "Node"> like Node;
         manager: <locking_type + "Manager"> like Manager;
-
     connections:
         nodes[0].link <--> manager.nodes++;
         nodes[1].link <--> manager.nodes++;

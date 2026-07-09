@@ -9,5 +9,7 @@ class PessimisticNode: public Node {
     // virtual void finish() override;
 
   private:
+    virtual cMessage* createStartMessage() override;
+
     void handleLockGranted(LockGranted* msg);
 };

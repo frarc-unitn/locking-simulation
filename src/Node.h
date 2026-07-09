@@ -5,7 +5,9 @@ using namespace omnetpp;
 
 class Node : public cSimpleModule {
   protected:
-    virtual void initialize() override = 0;
-    virtual void handleMessage(cMessage* msg) override = 0;
+    virtual void scheduleStart();
     // virtual void finish() override;
+
+  private:
+    virtual cMessage* createStartMessage() = 0;
 };
