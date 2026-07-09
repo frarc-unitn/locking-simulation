@@ -3,7 +3,7 @@
 void Node::scheduleStart() {
   const double delay = par("requestInterval").doubleValueInUnit("ms");
   cMessage* msg = createStartMessage();
-  sendDelayed(msg, delay, "link");
+  sendDelayed(msg, delay, "link$o");
 }
 
 int Node::doWork(int data) {
@@ -12,6 +12,6 @@ int Node::doWork(int data) {
 
 void Node::sendWorkMessage(cMessage* msg){
   const double delay = par("workDelay").doubleValueInUnit("ms");
-  sendDelayed(msg, delay, "link");
+  sendDelayed(msg, delay, "link$o");
 }
 
