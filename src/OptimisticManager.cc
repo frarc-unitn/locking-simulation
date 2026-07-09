@@ -23,7 +23,7 @@ void OptimisticManager::handleMessage(cMessage* msg) {
 void OptimisticManager::handleReadRequest(ReadRequest* msg) {
   ReadReply* reply = new ReadReply("Manager: Read Reply", MessageKind::READREQUEST);
   reply->setData(this->data);
-  send(reply, "nodes", msg->getSenderGate()->getIndex());
+  send(reply, msg->getSenderGate());
 }
 
 void OptimisticManager::handleCompareAndSwap(CompareAndSwap* msg) {
@@ -36,5 +36,5 @@ void OptimisticManager::handleCompareAndSwap(CompareAndSwap* msg) {
     ((CompareAndSwapFailed*) reply)->setData(this->data);
   }
 
-  send(reply, "nodes", msg->getSenderGate()->getIndex());
+  send(reply, msg->getSenderGate());
 }

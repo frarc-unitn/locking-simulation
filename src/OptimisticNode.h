@@ -14,4 +14,5 @@ class OptimisticNode: public Node {
     void handleReadReply(ReadReply* msg);
     void handleCompareAndSwapSuccess(CompareAndSwapSuccess* msg);
     void handleCompareAndSwapFailed(CompareAndSwapFailed* msg);
+    void prepareCompareAndSwap(int old_data);
 };

@@ -17,6 +17,7 @@ moduleinterface Node
 {
     parameters:
         double requestInterval @unit(ms);
+        double workDelay @unit(ms);
 
     gates:
         inout link;
@@ -26,6 +27,7 @@ simple OptimisticNode like Node
 {
     parameters:
         double requestInterval @unit(ms);
+        double workDelay @unit(ms);
 
     gates:
         inout link;
@@ -35,6 +37,7 @@ simple PessimisticNode like Node
 {
     parameters:
         double requestInterval @unit(ms);
+        double workDelay @unit(ms);
 
     gates:
         inout link;

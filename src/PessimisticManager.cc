@@ -28,7 +28,7 @@ void PessimisticManager::handleLockRequest(LockRequest* msg) {
     this->locked = true;
     LockGranted* lock = new LockGranted("Manager: Lock Granted", MessageKind::LOCKGRANTED);
     lock->setData(this->data);
-    send(lock, "nodes", msg->getSenderGate()->getIndex());
+    send(lock, msg->getSenderGate());
   } else {
     // assert this->waitQueue[msg->getSenderGate()->getIndex()] == false
     this->otherIsWaiting = true;
@@ -39,12 +39,15 @@ void PessimisticManager::handleLockRelease(LockRelease* msg) {
   this->data = msg->getData();
 
   if(this->otherIsWaiting){
-    const int waitingIndex = 1 - (msg->getSenderGate()->getIndex());
+    const int waiting_index = 1 - (msg->getSenderGate()->getIndex());
     LockGranted* lock = new LockGranted("Manager: Lock Granted", MessageKind::LOCKGRANTED);
     lock->setData(this->data);
-    send(lock, "nodes", waitingIndex);
+    send(lock, "nodes", waiting_index);
     this->otherIsWaiting = false;
   } else {
     this->locked = false;
   }
+
+  LockReleaseSuccessful* acknowledgement = new LockReleaseSuccessful("Manager: Lock Release Ack", MessageKind::LOCKRELSUCCESS);
+  send(acknowledgement, msg->getSenderGate());
 }
