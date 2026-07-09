@@ -8,7 +8,7 @@ void OptimisticNode::initialize() {
 }
 
 cMessage* OptimisticNode::createStartMessage() {
-  return new ReadRequest(nullptr, MessageKind::READREQUEST);
+  return new ReadRequest("Node: Read Request", MessageKind::READREQUEST);
 }
 
 void OptimisticNode::handleMessage(cMessage* msg) {
