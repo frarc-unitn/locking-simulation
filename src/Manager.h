@@ -4,10 +4,9 @@
 using namespace omnetpp;
 
 class Manager : public cSimpleModule {
-  private:
+  protected:
     int data = 0;
 
-  protected:
     // virtual void initialize() override;
     virtual void handleMessage(cMessage* msg) override = 0;
     // virtual void finish() override;

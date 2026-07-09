@@ -7,7 +7,11 @@ class PessimisticManager: public Manager {
     virtual void initialize() override;
     virtual void handleMessage(cMessage* msg) override;
     // virtual void finish() override;
+
   private:
+    bool locked = false;
+    bool otherIsWaiting = false;
+
     void handleLockRequest(LockRequest* msg);
     void handleLockRelease(LockRelease* msg);
 };
