@@ -28,7 +28,8 @@ void PessimisticManager::handleLockRequest(LockRequest* msg) {
     this->locked = true;
     LockGranted* lock = new LockGranted("Manager: Lock Granted", MessageKind::LOCKGRANTED);
     lock->setData(this->data);
-    send(lock, "nodes$o", msg->getArrivalGate()->getIndex());
+    double delay = par("lockDelay").doubleValueInUnit("ms");
+    sendDelayed(lock, delay, "nodes$o", msg->getArrivalGate()->getIndex());
   } else {
     // assert this->waitQueue[msg->getArrivalGate()->getIndex()] == false
     this->otherIsWaiting = true;
