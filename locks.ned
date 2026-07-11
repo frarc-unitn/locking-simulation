@@ -58,7 +58,7 @@ simple OptimisticManager like Manager
 simple PessimisticManager like Manager
 {
     parameters:
-        double lockDelay @unit(ms) = default(0ms);
+        volatile double lockDelay @unit(ms);
 
     gates:
         inout nodes[];
